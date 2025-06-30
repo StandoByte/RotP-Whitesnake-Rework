@@ -13,8 +13,21 @@
   "action.rotp_whitesnake.melt_your_heart": "Melt Your Heart",
   "action.rotp_whitesnake.blindness": "Lose Sight",
   "action.rotp_whitesnake.blindness_disable": "Restore Sight",
-  "action.rotp_whitesnake.removing_the_memory_disk": "Eject Memory Disc",
+  "action.rotp_whitesnake.disguise": "Choose a Disguise",
+  "action.rotp_whitesnake.disguise_as": "Disguise as a \"%s\"",
+  "action.rotp_whitesnake.disguise_disable": "Return normal form",
+  "action.rotp_whitesnake.removing_the_memory_disk": "Eject/Insert Memory Disc",
   "action.rotp_whitesnake.whitesnake_throw_disc": "Throw Disc",
 
-  "rotp_whitesnake.subtitle.whitesnake_name": "\"Whitesnake\""
+  "rotp_whitesnake.subtitle.whitesnake_name": "\"Whitesnake\"",
+
+  "rotp_whitesnake.memory_disc.player_name": "%s",
+  "rotp_whitesnake.memory_disc.current_player": "Contains memory of: %s",
+  "rotp_whitesnake.memory_disc.no_current_player": "Disk doesn't contain any memory",
+  "item.rotp_whitesnake.memory_disc_item": "Memory Disc",
+
+  "rotp_whitesnake.stand_skins.skin_a": "Whitesnake Old 1",
+  "rotp_whitesnake.stand_skins.skin_b": "Whitesnake Old 2",
+
+  "rotp_whitesnake.glint_config": "Show glint effect"
 }

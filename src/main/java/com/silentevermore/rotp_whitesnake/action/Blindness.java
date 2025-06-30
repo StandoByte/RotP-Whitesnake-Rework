@@ -15,29 +15,28 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class Blindness extends StandEntityAction{
-    //constants
-    private final LazySupplier<ResourceLocation> disableTex=new LazySupplier<>(()->makeIconVariant(this,"_disable"));
-    //builder
+public class Blindness extends StandEntityAction {
+    private final LazySupplier<ResourceLocation> disableTex = new LazySupplier<>(() -> makeIconVariant(this, "_disable"));
+
     public Blindness(StandEntityAction.Builder builder) {
         super(builder);
     }
-    //methods
+
     @Override
     public void standPerform(World world, StandEntity standEntity, IStandPower userPower, StandEntityTask task) {
-        if (!world.isClientSide()){
-            LivingEntity user=userPower.getUser();
-            if (!user.hasEffect(Effects.BLINDNESS)){
-                user.addEffect(new EffectInstance(Effects.BLINDNESS,(int)1e5,1,false,false,false));
-            }else{
-                user.removeEffect(Effects.BLINDNESS);
+        if (!world.isClientSide()) {
+            LivingEntity userEntity = userPower.getUser();
+            if (!userEntity.hasEffect(Effects.BLINDNESS)) {
+                userEntity.addEffect(new EffectInstance(Effects.BLINDNESS, (int) 1e5, 1, false, false, false));
+            } else {
+                userEntity.removeEffect(Effects.BLINDNESS);
             }
         }
     }
 
     @Override
-    public IFormattableTextComponent getTranslatedName(IStandPower power, String key){
-        if (power!=null && power.getUser().hasEffect(Effects.BLINDNESS)){
+    public IFormattableTextComponent getTranslatedName(IStandPower power, String key) {
+        if (power != null && power.getUser().hasEffect(Effects.BLINDNESS)) {
             return new TranslationTextComponent("action.rotp_whitesnake.blindness_disable");
         }
         return new TranslationTextComponent(key);
@@ -45,7 +44,7 @@ public class Blindness extends StandEntityAction{
 
     @Override
     public ResourceLocation getIconTexturePath(@Nullable IStandPower power) {
-        if (power!=null && power.getUser().hasEffect(Effects.BLINDNESS)){
+        if (power != null && power.getUser().hasEffect(Effects.BLINDNESS)) {
             return this.disableTex.get();
         }
         return super.getIconTexturePath(power);

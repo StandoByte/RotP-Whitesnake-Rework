@@ -6,54 +6,40 @@ import com.github.standobyte.jojo.action.stand.StandEntityAction;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntityTask;
 import com.github.standobyte.jojo.power.impl.stand.IStandPower;
-import com.github.standobyte.jojo.util.mod.JojoModUtil;
-import com.silentevermore.rotp_whitesnake.block.MeltHeartBlock;
-import com.silentevermore.rotp_whitesnake.entity.projectile.DiscProjectile;
 import com.silentevermore.rotp_whitesnake.entity.projectile.MeltHeartProjectile;
-import com.silentevermore.rotp_whitesnake.init.InitBlocks;
-import net.minecraft.block.Blocks;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceContext;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import static com.silentevermore.rotp_whitesnake.block.MeltHeartBlock.LAYERS;
-
-public class MeltYourHeart extends StandEntityAction{
+public class MeltYourHeart extends StandEntityAction {
     //builder
-    public MeltYourHeart(StandEntityAction.Builder builder){
+    public MeltYourHeart(StandEntityAction.Builder builder) {
         super(builder);
     }
+
     //methods
     @Override
-    protected ActionConditionResult checkStandConditions(StandEntity stand, IStandPower power, ActionTarget target){
-        return (power.getStamina()>=100) ? ActionConditionResult.POSITIVE : ActionConditionResult.NEGATIVE;
+    protected ActionConditionResult checkStandConditions(StandEntity stand, IStandPower power, ActionTarget target) {
+        return (power.getStamina() >= 100) ? ActionConditionResult.POSITIVE : ActionConditionResult.NEGATIVE;
     }
 
     @Override
-    public void standTickPerform(World world, StandEntity standEntity, IStandPower userPower, StandEntityTask task){
-        if (!world.isClientSide()){
-            //constants
-            final ThreadLocalRandom rng=ThreadLocalRandom.current();
-            final MeltHeartProjectile proj=new MeltHeartProjectile(standEntity, world);
-            final Vector3d origin=standEntity.position().add(
+    public void standTickPerform(World world, StandEntity standEntity, IStandPower userPower, StandEntityTask task) {
+        if (!world.isClientSide()) {
+            final ThreadLocalRandom rng = ThreadLocalRandom.current();
+            final MeltHeartProjectile proj = new MeltHeartProjectile(standEntity, world);
+            final Vector3d origin = standEntity.position().add(
                     0,
-                    standEntity.getBbHeight()/2f,
+                    standEntity.getBbHeight() / 2f,
                     0
             );
-            //stuff
             proj.setPos(origin.x(), origin.y(), origin.z());
             standEntity.shootProjectile(proj, .1f, .5f);
             proj.setDeltaMovement(new Vector3d(
-                    rng.nextDouble(-.2,.2),
-                            0,
-                    rng.nextDouble(-.2,.2)
+                    rng.nextDouble(-.2, .2),
+                    0,
+                    rng.nextDouble(-.2, .2)
             ));
         }
     }

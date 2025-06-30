@@ -15,6 +15,10 @@ out
 
 # gradle
 build
+<<<<<<< HEAD
+=======
+build/*
+>>>>>>> branch 'main' of https://github.com/StandoByte/RotP-Whitesnake-Rework
 .gradle
 
 # other
